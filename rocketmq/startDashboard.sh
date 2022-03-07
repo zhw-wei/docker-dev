@@ -5,7 +5,7 @@ local_ip=`ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'
 echo "local ip is $local_ip"
 echo
 
-contaier_name="rocketmq-dashboard"
+container_name="rocketmq-dashboard"
 
 # 下载容器镜像
 image_num=`docker image ls | grep "apacherocketmq/rocketmq-dashboard" | wc -l`
@@ -14,14 +14,19 @@ then
     docker pull apacherocketmq/rocketmq-dashboard:latest
 fi
 
+echo
 # 启动容器
 container_num=`docker container ls -a | grep "apacherocketmq/rocketmq-dashboard" | wc -l`
 if [ $container_num -eq 0 ]
 then
     echo "启动容器 ... ...."
-    docker run -d --name $contaier_name -e "JAVA_OPTS=-Drocketmq.namesrv.addr=$local_ip:9876" -p 8080:8080 -t apacherocketmq/rocketmq-dashboard:latest
+    docker run -d --name $container_name -e "JAVA_OPTS=-Drocketmq.namesrv.addr=$local_ip:9876" -p 8080:8080 -t apacherocketmq/rocketmq-dashboard:latest
 else
-    docker container start $contaier_name
+    docker container start $container_name
 fi
 
-echo "访问地址: http://$local_ip:8080"
+echo
+echo "rocketmq管理页面访问地址: http://$local_ip:8080"
+echo
+echo "停止容器命令: docker container stop $container_name"
+echo
