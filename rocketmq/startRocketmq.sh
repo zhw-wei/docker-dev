@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo
+
 rocketmq_path="/usr/local/programs/rocketmq-4.9.2"
 echo "rocketmq path is $rocketmq_path"
 
@@ -16,6 +18,7 @@ echo "local ip is $local_ip"
 # 注意：默认java8时，步骤2也是一定要改动的，因为rocketmq的配置需求要求太高
 #
 #***************
+ehco
 
 # 启动namesrv
 nohup bash $rocketmq_path/bin/mqnamesrv &
@@ -29,4 +32,4 @@ echo
 echo "============================================"
 echo
 
-ps -ef | grep $rocketmq_path
+ps -ef | grep $rocketmq_path --color=auto
