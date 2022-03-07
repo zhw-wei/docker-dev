@@ -19,10 +19,13 @@ echo
 container_num=`docker container ls -a | grep "apacherocketmq/rocketmq-dashboard" | wc -l`
 if [ $container_num -eq 0 ]
 then
-    echo "启动容器 ... ...."
+    echo "启动容器 ... ..."
     docker run -d --name $container_name -e "JAVA_OPTS=-Drocketmq.namesrv.addr=$local_ip:9876" -p 8080:8080 -t apacherocketmq/rocketmq-dashboard:latest
+    echo "启动容器成功 ... ..."
 else
+    echo "启动容器 ... ..."
     docker container start $container_name
+    echo "启动容器成功 ... ..."
 fi
 
 echo
