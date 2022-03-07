@@ -19,8 +19,14 @@ echo "local ip is $local_ip"
 
 # 启动namesrv
 nohup bash $rocketmq_path/bin/mqnamesrv &
-
+echo 
 # 启动borker
 nohup bash $rocketmq_path/bin/mqbroker -c conf/broker.conf -n 127.0.0.1:9876 &
+
+sleep 3s
+
+echo
+echo "============================================"
+echo
 
 ps -ef | grep $rocketmq_path
