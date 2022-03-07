@@ -19,12 +19,9 @@ echo
 
 # 启动namesrv
 nohup bash $rocketmq_path/bin/mqnamesrv &
-<<<<<<< HEAD
 echo
-=======
 sleep 1s
 echo 
->>>>>>> 0d64e37954f18cac4c46f313429d81bd8037cd78
 # 启动borker
 nohup bash $rocketmq_path/bin/mqbroker -c $rocketmq_path/conf/broker.conf -n 127.0.0.1:9876 &
 
