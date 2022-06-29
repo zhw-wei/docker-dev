@@ -7,7 +7,7 @@
 
 ## fedora
 1. 使用fedora网页端控制台访问fedora linux
-2. 关闭防火墙
+2. 关闭防火墙 
 
 ## docker配置
 ```shell
