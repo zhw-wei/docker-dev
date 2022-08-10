@@ -1,0 +1,26 @@
+version: "3"
+
+networks:
+  gitea:
+    external: false
+
+services:
+  server:
+    image: gitea/gitea:latest
+    container_name: gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    restart: always
+    networks:
+      - gitea
+    volumes:
+      - /Users/zhw/gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3366:3000"
+      - "2233:22"
+
+# 部署命令：docker-compose -d up
+# 配置可直接配置数据库为sqlLite，不需要mysql数据
